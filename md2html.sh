@@ -25,8 +25,8 @@ fi
 
 HTML_TEMPLATE="${DIR}/template.html"
 CSS_TEMPLATE="${DIR}/github.css"
-REPORT_FILTER="${DIR}/head2title_filter.py"
+REPORT_FILTER="${DIR}/head2title_filter.lua"
 
 pandoc ${INPUT} -o ${OUTPUT} \
-    --filter=${REPORT_FILTER} --template=${HTML_TEMPLATE} --css=${CSS_TEMPLATE} --resource-path=${WORKDIR} \
+    --lua-filter=${REPORT_FILTER} --template=${HTML_TEMPLATE} --css=${CSS_TEMPLATE} --resource-path=${WORKDIR} \
     --toc --standalone --self-contained

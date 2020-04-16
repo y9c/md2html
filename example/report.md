@@ -1,3 +1,7 @@
+---
+title: "16s data series"
+---
+
 # Induction of Leydig Cells by Two Approaches
 
 ## 样品分组及命名 (Samples and Data)
@@ -42,3 +46,4 @@ Chemicals 诱导组的结果类似：[^1]
 </p>
 
 [^1]: 参考 xxxxxx
+
