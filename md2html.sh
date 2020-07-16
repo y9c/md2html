@@ -31,10 +31,16 @@ fi
 HTML_TEMPLATE="${DIR}/templates/default.html"
 CSS_TEMPLATE="${DIR}/templates/github.css"
 JS_TEMPLATE="${DIR}/templates/floating-toc.html"
+
 REPORT_FILTER="${DIR}/filters/head2title_filter.lua"
+SECNUM_FILTER="${DIR}/filters/numbering_sections.lua"
+
+SECNOS_FILTER="${DIR}/filters/pandoc_secnos.py"
+# --filter="${SECNOS_FILTER}" \
 
 pandoc "${INPUT}" -o "${OUTPUT}" \
     --lua-filter="${REPORT_FILTER}" \
+    --lua-filter="${SECNUM_FILTER}" \
     --resource-path="${WORKDIR}" \
     --template="${HTML_TEMPLATE}" --css="${CSS_TEMPLATE}" --include-in-header "${JS_TEMPLATE}" --toc \
     --standalone --self-contained
