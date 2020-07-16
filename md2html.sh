@@ -11,22 +11,30 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)"
 # INPUT="report.md"
 INPUT=$1
 
-if [ -f "${INPUT}" ]; then
-    #echo $(realpath ${INPUT})
-    WORKDIR="$(
-        cd "$(dirname "$INPUT")"
-        pwd -P
-    )"
-    OUTPUT="${WORKDIR}/$(basename "${INPUT}" ".md").html"
+if [ " $#" -eq "0" ]; then
+    echo -e "USAGE: ./md2html.sh inputfile"
+    exit 0
 else
-    echo "${INPUT} not exist"
-    exit 1
+    if [ -f "${INPUT}" ]; then
+        #echo $(realpath ${INPUT})
+        WORKDIR="$(
+            cd "$(dirname "$INPUT")" || exit
+            pwd -P
+        )"
+        OUTPUT="${WORKDIR}/$(basename "${INPUT}" ".md").html"
+    else
+        echo "Input File (${INPUT}) is not exist"
+        exit 1
+    fi
 fi
 
-HTML_TEMPLATE="${DIR}/template.html"
-CSS_TEMPLATE="${DIR}/github.css"
-REPORT_FILTER="${DIR}/head2title_filter.lua"
+HTML_TEMPLATE="${DIR}/templates/default.html"
+CSS_TEMPLATE="${DIR}/templates/github.css"
+JS_TEMPLATE="${DIR}/templates/floating-toc.html"
+REPORT_FILTER="${DIR}/filters/head2title_filter.lua"
 
-pandoc ${INPUT} -o ${OUTPUT} \
-    --lua-filter=${REPORT_FILTER} --template=${HTML_TEMPLATE} --css=${CSS_TEMPLATE} --resource-path=${WORKDIR} \
-    --toc --standalone --self-contained
+pandoc "${INPUT}" -o "${OUTPUT}" \
+    --lua-filter="${REPORT_FILTER}" \
+    --resource-path="${WORKDIR}" \
+    --template="${HTML_TEMPLATE}" --css="${CSS_TEMPLATE}" --include-in-header "${JS_TEMPLATE}" --toc \
+    --standalone --self-contained
