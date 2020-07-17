@@ -11,32 +11,45 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)"
 # INPUT="report.md"
 INPUT=$1
 
-if [ -f "${INPUT}" ]; then
-    #echo $(realpath ${INPUT})
-    WORKDIR="$(
-        cd "$(dirname "$INPUT")"
-        pwd -P
-    )"
-    OUTPUT="${WORKDIR}/$(basename "${INPUT}" ".md").html"
+if [ " $#" -eq "0" ]; then
+    echo -e "USAGE: ./md2html.sh inputfile"
+    exit 0
 else
-    echo "${INPUT} not exist"
-    exit 1
+    if [ -f "${INPUT}" ]; then
+        #echo $(realpath ${INPUT})
+        WORKDIR="$(
+            cd "$(dirname "$INPUT")" || exit
+            pwd -P
+        )"
+        OUTPUT="${WORKDIR}/$(basename "${INPUT}" ".md").html"
+    else
+        echo "Input File (${INPUT}) is not exist"
+        exit 1
+    fi
 fi
-
-HTML_TEMPLATE="${DIR}/template.html"
-CSS_TEMPLATE="${DIR}/github.css"
-# REPORT_FILTER="${DIR}/filters/head2title_filter.lua"
-# REPORT_FILTER="${DIR}/filters/tikz2iamge_filter.lua"
-DIAGRAM_FILTER="${DIR}/filters/diagram_filter.lua"
 
 # KATEX_DIR="https://cdn.bootcss.com/KaTeX/0.11.1/"
 KATEX_DIR="${DIR}/katex/"
 
-pandoc ${INPUT} -o ${OUTPUT} \
-    --template=${HTML_TEMPLATE} --css=${CSS_TEMPLATE} --resource-path=${WORKDIR} \
+HTML_TEMPLATE="${DIR}/templates/default.html"
+CSS_TEMPLATE="${DIR}/templates/github.css"
+TOC_TEMPLATE="${DIR}/templates/floating-toc.html"
+
+REPORT_FILTER="${DIR}/filters/head2title_filter.lua"
+SECNUM_FILTER="${DIR}/filters/numbering_sections.lua"
+DIAGRAM_FILTER="${DIR}/filters/diagram_filter.lua"
+# REPORT_FILTER="${DIR}/filters/head2title_filter.lua"
+# REPORT_FILTER="${DIR}/filters/tikz2iamge_filter.lua"
+
+pandoc "${INPUT}" -o "${OUTPUT}" \
+    --lua-filter="${REPORT_FILTER}" \
+    --lua-filter="${SECNUM_FILTER}" \
+    --lua-filter="${DIAGRAM_FILTER}" \
+    --resource-path="${WORKDIR}" \
+    --template="${HTML_TEMPLATE}" --css="${CSS_TEMPLATE}" \
+    --include-in-header "${TOC_TEMPLATE}" \
+    --toc --number-sections --number-offset=0 \
+    --katex=${KATEX_DIR}
     --default-image-extension=jpg \
-    --lua-filter=${DIAGRAM_FILTER} \
-    --katex=${KATEX_DIR} --toc --number-sections --number-offset=0 \
     --standalone --self-contained
 
-# --lua-filter=${REPORT_FILTER} \

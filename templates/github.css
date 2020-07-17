@@ -122,6 +122,7 @@ h1 {
   margin: 0.67em 0;
 }
 
+
 /**
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
  */
@@ -491,6 +492,11 @@ h6 {
 h1 {
   font-size: 28px;
   color: #000;
+}
+h1.title {
+  font-size: 32px !important;
+  text-align:center;
+  color: grey !important;
 }
 h2 {
   font-size: 24px;
@@ -1006,3 +1012,4 @@ sub {
 .type-csharp .highlight .sc {
   color: #a31515;
 }
+
