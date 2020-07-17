@@ -94,11 +94,12 @@ local function tikz2image(src, filetype, additionalPackages)
 
     -- Define file names:
     local outfile = string.format("./tmp-latex/file.%s", filetype)
-    local tmp = "./tmp-latex/file"
-    local tmpDir = "./tmp-latex/"
+    -- local tmpDir = "./tmp-latex/"
+    local tmpDir = "./example/tmp-latex/"
+    local tmp = tmpDir .. "file"
 
     -- Ensure, that the tmp directory exists:
-    os.execute("mkdir -p tmp-latex")
+    os.execute("mkdir -p " ..  tmpDir)
 
     -- Build and write the LaTeX document:
     local f = io.open(tmp .. ".tex", 'w')

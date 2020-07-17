@@ -46,10 +46,12 @@ pandoc "${INPUT}" -o "${OUTPUT}" \
     --lua-filter="${SECNUM_FILTER}" \
     --lua-filter="${DIAGRAM_FILTER}" \
     --resource-path="${WORKDIR}" \
+    --katex=${KATEX_DIR} \
     --template="${HTML_TEMPLATE}" --css="${CSS_TEMPLATE}" \
     --include-in-header "${TOC_TEMPLATE}" \
-    --toc --number-sections --number-offset=0 \
-    --katex=${KATEX_DIR}
+    --toc \
     --default-image-extension=jpg \
     --standalone --self-contained
 
+# --number-sections \
+# --number-offset=0 \
