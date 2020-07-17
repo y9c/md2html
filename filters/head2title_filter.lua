@@ -6,6 +6,7 @@ function promote_header(header)
       title = header.content
       return {}
     else
+      print(header)
       local msg = '[WARNING] title already set; discarding header "%s"\n'
       io.stderr:write(msg:format(pandoc.utils.stringify(header)))
     end

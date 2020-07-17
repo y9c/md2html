@@ -13,8 +13,8 @@
 article,
 aside,
 details,
-figcaption,
-figure,
+/* figcaption, */
+/* figure, */
 footer,
 header,
 hgroup,
@@ -232,6 +232,7 @@ sub {
 
 img {
   border: 0;
+  margin: auto;
 }
 
 /**
@@ -251,15 +252,16 @@ svg:not(:root) {
  */
 
 figure {
-  margin: 0;
+  display: inline-table;
 }
 
 figcaption {
-  color: #696969;
-  font: small sans-serif;
-  padding: 3px;
+  caption-side: bottom ;
   text-align: center;
+  font: small sans-serif;
+  color: #696969;
 }
+
 
 /* ==========================================================================
    Forms

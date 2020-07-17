@@ -1,3 +1,6 @@
+node_modules/
+
 .mypy_cache/
 
 example/report.html
+example/tmp

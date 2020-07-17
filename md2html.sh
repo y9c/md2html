@@ -25,8 +25,18 @@ fi
 
 HTML_TEMPLATE="${DIR}/template.html"
 CSS_TEMPLATE="${DIR}/github.css"
-REPORT_FILTER="${DIR}/head2title_filter.lua"
+# REPORT_FILTER="${DIR}/filters/head2title_filter.lua"
+# REPORT_FILTER="${DIR}/filters/tikz2iamge_filter.lua"
+DIAGRAM_FILTER="${DIR}/filters/diagram_filter.lua"
+
+# KATEX_DIR="https://cdn.bootcss.com/KaTeX/0.11.1/"
+KATEX_DIR="${DIR}/katex/"
 
 pandoc ${INPUT} -o ${OUTPUT} \
-    --lua-filter=${REPORT_FILTER} --template=${HTML_TEMPLATE} --css=${CSS_TEMPLATE} --resource-path=${WORKDIR} \
-    --toc --standalone --self-contained
+    --template=${HTML_TEMPLATE} --css=${CSS_TEMPLATE} --resource-path=${WORKDIR} \
+    --default-image-extension=jpg \
+    --lua-filter=${DIAGRAM_FILTER} \
+    --katex=${KATEX_DIR} --toc --number-sections --number-offset=0 \
+    --standalone --self-contained
+
+# --lua-filter=${REPORT_FILTER} \
