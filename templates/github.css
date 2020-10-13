@@ -435,7 +435,7 @@ body {
   margin: auto;
   padding-right: 1em;
   padding-left: 1em;
-  max-width: 44em;
+  max-width: 60em;
   color: black;
 }
 *:not("#mkdbuttons") {
@@ -443,7 +443,7 @@ body {
   padding: 0;
 }
 body {
-  font: 13.34px helvetica, arial, freesans, clean, sans-serif;
+  font: 16.34px helvetica, arial, freesans, clean, sans-serif;
   -webkit-font-smoothing: subpixel-antialiased;
   line-height: 1.4;
   padding: 3px;
@@ -463,7 +463,7 @@ body {
   background-color: #fff;
   padding: 30px;
   margin: 15px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
 }
 body > *:first-child {
@@ -585,7 +585,7 @@ dl {
   padding: 0;
 }
 dl dt {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   font-style: italic;
   padding: 0;
@@ -655,7 +655,7 @@ tt {
   background-color: #f8f8f8;
   border-radius: 3px;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
-  font-size: 12px;
+  font-size: 13px;
   color: #333;
 }
 pre > code {
@@ -668,7 +668,7 @@ pre > code {
 .highlight pre {
   background-color: #f8f8f8;
   border: 1px solid #ccc;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 19px;
   overflow: auto;
   padding: 6px 10px;
@@ -677,7 +677,7 @@ pre > code {
 pre {
   background-color: #f8f8f8;
   border: 1px solid #ccc;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 19px;
   overflow: auto;
   padding: 6px 10px;
