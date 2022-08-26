@@ -8,10 +8,10 @@
 
 then open `example/report.html` with browser
 
-## Live Demo
+## Live demo from github action
 
-- [input](https://yech1990.github.io/md2html/report.txt)
-- [output](https://yech1990.github.io/md2html/report.html)
+- [input](https://y9c.github.io/md2html/report.txt)
+- [output](https://y9c.github.io/md2html/report.html)
 
 ## Install
 
