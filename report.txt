@@ -56,7 +56,7 @@ print('test')
 ```
 
 ```python
-print('test')
+print("test")
 ```
 
 ```{.graphviz caption="This is an image, created by **Graphviz**'s dot."}
