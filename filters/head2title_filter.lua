@@ -13,23 +13,20 @@ function promote_header(header)
   end
 end
 
-return
+return {
+  -- read title from meta
   {
-    -- read title from meta
-    {
-      Meta =
-        function(meta)
-          title = meta.title
-        end,
-    },
-    -- read title from header
-    {Header = promote_header},
-    -- set title into meta
-    {
-      Meta =
-        function(meta)
-          meta.title = title;
-          return meta
-        end,
-    },
+    Meta = function(meta)
+      title = meta.title
+    end
+  },
+  -- read title from header
+  {Header = promote_header},
+  -- set title into meta
+  {
+    Meta = function(meta)
+      meta.title = title
+      return meta
+    end
   }
+}

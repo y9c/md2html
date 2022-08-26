@@ -7,12 +7,10 @@
 # Created: 2020-04-15 22:00
 
 
-"""
-Pandoc filter to convert all level 2+ headers to paragraphs with
-emphasized text.
-"""
+"""Pandoc filter to convert all level 2+ headers to paragraphs with emphasized
+text."""
 
-from pandocfilters import toJSONFilter, Null
+from pandocfilters import Null, toJSONFilter
 
 
 def behead(key, value, format, meta):

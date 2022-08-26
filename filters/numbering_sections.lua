@@ -6,10 +6,10 @@
 local headersToIgnore = {
   ["List of Figures"] = true,
   ["List of Listings"] = true,
-  ["List of Tables"] = true,
+  ["List of Tables"] = true
 }
 
-local counters = {};
+local counters = {}
 
 function Header(el)
   local headerPlainText = pandoc.utils.stringify(el)
@@ -28,9 +28,7 @@ function Header(el)
     firstCounterLevel = 2
   end
   counters[level] = counters[level] + 1
-  local content = concat(
-    {pandoc.Str(countersToString(firstCounterLevel, level) .. " ")},
-    el.content)
+  local content = concat({pandoc.Str(countersToString(firstCounterLevel, level) .. " ")}, el.content)
   return pandoc.Header(el.level, content, el.attr)
 end
 
@@ -48,8 +46,10 @@ end
 
 function countersToString(firstCounterLevel, lastCounterLevel)
   local result = ""
-  for k,v in pairs(counters) do
-    if k > lastCounterLevel then break end
+  for k, v in pairs(counters) do
+    if k > lastCounterLevel then
+      break
+    end
     if k >= firstCounterLevel then
       if k == 1 then
         result = result .. pandoc.utils.to_roman_numeral(v) .. "."
@@ -62,14 +62,14 @@ function countersToString(firstCounterLevel, lastCounterLevel)
 end
 
 function insertInto(source, target)
-  for _,v in pairs(source) do
+  for _, v in pairs(source) do
     table.insert(target, v)
   end
   return target
 end
 
 function concat(t1, t2)
-  local result = {};
+  local result = {}
   insertInto(t1, result)
   insertInto(t2, result)
   return result
