@@ -15,15 +15,22 @@ then open `example/report.html` with browser
 
 ## Install
 
-- install mermaid.cli
+- install pandoc
 
   ```bash
-  yarn add @mermaid-js/mermaid-cli
-  ./node_modules/.bin/mmdc -h
+  sudo pacman -S pandoc
   ```
 
-- install dot
+- install dot2text dependence
 
   ```bash
   sudo pacman -S dot2tex
+  ```
+
+- install mermaid.cli dependence
+
+  ```bash
+  yarn add @mermaid-js/mermaid-cli
+  # yarn install
+  ./node_modules/.bin/mmdc -h
   ```
