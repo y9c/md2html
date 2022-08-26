@@ -16,6 +16,10 @@ jobs:
         run: |
           wget https://github.com/jgm/pandoc/releases/download/2.10/pandoc-2.10-1-amd64.deb && sudo dpkg -i pandoc-2.10-1-amd64.deb
 
+      - name: Install dep
+        run: |
+          sudo apt-get update && sudo apt-get install graphviz -y
+
       - name: Build demo
         run: |
           make

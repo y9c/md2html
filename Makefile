@@ -8,7 +8,7 @@ all: demo
 
 demo:
 	@echo -e "\t---> runing demo..."
-	@./md2html.sh example/report.md # 2>/dev/null
+	@./md2html.sh example/report.md 2>/dev/null
 	@echo -e "\t---> html generated."
 
 # vim:ft=make
